@@ -102,3 +102,9 @@ h1 {
   color: #c5aeff;
   text-decoration: line-through;
 }
+/* here is for  */
+@media screen and (max-width: 768px) {
+  .todo-input{
+    width: 100%;
+  }
+}
