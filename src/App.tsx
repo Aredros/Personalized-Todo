@@ -19,7 +19,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAxzYdcy-I9ov79SwnIPg9zNaDnkxvIirM",
-  authDomain: "aredros.github.io",
+  authDomain: "todocheo-ef450.firebaseapp.com",
   projectId: "todocheo-ef450",
   storageBucket: "todocheo-ef450.appspot.com",
   messagingSenderId: "551284725708",
