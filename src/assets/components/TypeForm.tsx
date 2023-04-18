@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
-export const TypeForm = ({ addType }) => {
+interface TypeFormProps {
+  addType: (type: string) => void;
+}
+
+export const TypeForm = ({ addType }: TypeFormProps) => {
   const [typeValue, setTypeValue] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!typeValue) return;
     addType(typeValue);

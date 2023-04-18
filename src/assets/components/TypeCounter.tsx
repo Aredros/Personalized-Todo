@@ -1,6 +1,17 @@
 import React from "react";
 
-export const TypeCounter = ({ todos, getCountForType }) => {
+interface TypeCounterProps {
+  todos: {
+    id: string;
+    task: string;
+    completed: boolean;
+    isEditing: boolean;
+    nType: string;
+  }[];
+  getCountForType: (type: string) => number;
+}
+
+export const TypeCounter = ({ todos, getCountForType }: TypeCounterProps) => {
   return (
     <>
       {todos.some((e) => e.nType === "Health") && (

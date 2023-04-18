@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
-export const TodoForm = ({ addTodo, types }) => {
+interface TodoFormProps {
+  addTodo: (task: string, type: string, date: string) => void;
+  types: string[];
+}
+
+export const TodoForm = ({ addTodo, types }: TodoFormProps) => {
   const [value, setValue] = useState("");
   const [type, setType] = useState("");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
 
   //function to add a TODO to the array of todos
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     //preventDefault will prevent the page from reloading
     e.preventDefault();
     if (!value) return;

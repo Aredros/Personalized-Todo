@@ -5,12 +5,23 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { EditTodoForm } from "./EditTodoForm";
 
 interface TodoProps {
-  task: { id: string; task: string; completed: boolean; isEditing: boolean };
+  task: {
+    id: string;
+    task: string;
+    completed: boolean;
+    isEditing: boolean;
+    nType: string;
+  };
   toggleComplete: (id: string) => void;
   deleteTodo: (id: string) => void;
   editTodo: (id: string) => void;
 }
-export const Todo = ({ task, toggleComplete, deleteTodo, editTodo }) => {
+export const Todo = ({
+  task,
+  toggleComplete,
+  deleteTodo,
+  editTodo,
+}: TodoProps) => {
   return (
     <div className="Todo">
       <p

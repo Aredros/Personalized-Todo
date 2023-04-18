@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 
-// interface EditTodoFormProps {
-//   editTodo: (task: string, id: string) => void;
-//   task: { id: string; task: string; completed: boolean; isEditing: boolean };
-// }
+interface EditTodoFormProps {
+  editTask: (task: string, id: string, date: string, type: string) => void;
+  task: {
+    id: string;
+    task: string;
+    completed: boolean;
+    isEditing: boolean;
+    nType: string;
+    date: string;
+  };
+  types: string[];
+}
 
-export const EditTodoForm = ({ editTask, task, types }) => {
+export const EditTodoForm = ({ editTask, task, types }: EditTodoFormProps) => {
   const [value, setValue] = useState(task.task);
   const [type, setType] = useState(task.nType);
   const [date, setDate] = useState(task.date);
 
   //this function is called when the user types in the input field
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     //preventDefault will prevent the page from reloading
     e.preventDefault();
     editTask(value, type, date, task.id);

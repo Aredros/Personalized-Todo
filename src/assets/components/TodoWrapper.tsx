@@ -7,8 +7,19 @@ import { TypeCounter } from "./TypeCounter";
 import { TypeForm } from "./TypeForm";
 uuidv4();
 
+// Define interface for Todo object
+interface ITodo {
+  id: string;
+  task: string;
+  completed: boolean;
+  isEditing: boolean;
+  nType: string;
+  date: string;
+}
+
 export const TodoWrapper = () => {
-  const [todos, setTodos] = useState([]);
+  //state to store the todos
+  const [todos, setTodos] = useState<ITodo[]>([]); // Specify type as ITodo[]
   const [types, setTypes] = useState(["Health", "Studies", "Hobbies"]);
 
   //function to fetch the previous todos from LocalStorage
@@ -20,7 +31,7 @@ export const TodoWrapper = () => {
   }, []); //the empty array is to make sure the useEffect only runs once
 
   //function to add a TODO
-  const addTodo = (todo, type, date) => {
+  const addTodo = (todo: string, type: string, date: string) => {
     //create a new todo object
     const newTodo = {
       id: uuidv4(),
@@ -40,7 +51,7 @@ export const TodoWrapper = () => {
   };
 
   //function to delete a TODO
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id));
     //store the updated todos state in LocalStorage
     localStorage.setItem(
@@ -52,7 +63,7 @@ export const TodoWrapper = () => {
   //function to change the status of a TODO
   //by using the map function we can loop through the todos array and change the status of the todo
   //that matches the id that was passed in
-  const toggleComplete = (id) => {
+  const toggleComplete = (id: string) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -70,7 +81,7 @@ export const TodoWrapper = () => {
   };
 
   //function to start the process of editing a TODO //starts the editing status
-  const editTodo = (id) => {
+  const editTodo = (id: string) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
@@ -88,7 +99,7 @@ export const TodoWrapper = () => {
   };
 
   //function to finish the editing process //ends the editing status
-  const editTask = (task, type, date, id) => {
+  const editTask = (task: string, type: string, date: string, id: string) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id
@@ -122,7 +133,7 @@ export const TodoWrapper = () => {
   };
 
   //function to create a new Type
-  const addType = (type) => {
+  const addType = (type: string) => {
     //check if the type already exists
     if (!types.includes(type)) {
       //add the new type to the types array
@@ -131,7 +142,7 @@ export const TodoWrapper = () => {
   };
 
   //function to get the count of items for a specific age
-  const getCountForType = (type) => {
+  const getCountForType = (type: string) => {
     return todos.filter((todo) => todo.nType === type).length;
   };
 
